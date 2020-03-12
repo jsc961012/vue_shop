@@ -2,14 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
-// µ¼Èë×ÖÌåÍ¼±ê
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 import './assets/fonts/iconfont.css'
-// µ¼ÈëÈ«¾ÖÑùÊ½±í
+// ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
 import './assets/css/global.css'
 
 import axios from 'axios'
-// ÅäÖÃÇëÇóµÄ¸úÂ·¾¶
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Â·ï¿½ï¿½
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+axios.interceptors.request.use(config => {
+  // console.log(config)
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  // åœ¨æœ€åå¿…é¡» return config
+  return config
+})
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

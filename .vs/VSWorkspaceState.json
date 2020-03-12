@@ -2,12 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\assets",
     "\\src\\assets\\css",
-    "\\src\\components",
-    "\\src\\plugins",
-    "\\src\\router",
-    "\\src\\views"
+    "\\src\\plugins"
   ],
   "SelectedNode": "\\src\\plugins\\element.js",
   "PreviewInSolutionExplorer": false

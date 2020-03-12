@@ -1,24 +1,24 @@
 <template>
   <div class="login_container">
     <div class="login_box">
-      <!-- Í·ÏñÇøÓò -->
+      <!-- å¤´åƒåŒºåŸŸ -->
       <div class="avatar_box">
         <img src="../assets/logo.png" alt="">
       </div>
-      <!-- µÇÂ¼±íµ¥ÇøÓò -->
+      <!-- ç™»å½•è¡¨å•åŒºåŸŸ -->
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" label-width="0px" class="login_form">
-        <!-- ÓÃ»§Ãû -->
+        <!-- ç”¨æˆ·å -->
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user"></el-input>
         </el-form-item>
-        <!-- ÃÜÂë -->
+        <!-- å¯†ç  -->
         <el-form-item prop="password">
           <el-input v-model="loginForm.password" prefix-icon="iconfont icon-3702mima" type="password"></el-input>
         </el-form-item>
-        <!-- °´Å¥ÇøÓò -->
+        <!-- æŒ‰é’®åŒºåŸŸ -->
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">µÇÂ¼</el-button>
-          <el-button type="info" @click="resetLoginForm">ÖØÖÃ</el-button>
+          <el-button type="primary" @click="login">ç™»å½•</el-button>
+          <el-button type="info" @click="resetLoginForm">é‡ç½®</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -29,28 +29,28 @@
 export default {
   data() {
     return {
-      // ÕâÊÇµÇÂ¼±íµ¥µÄÊı¾İ°ó¶¨¶ÔÏó
+      // è¿™æ˜¯ç™»å½•è¡¨å•çš„æ•°æ®ç»‘å®šå¯¹è±¡
       loginForm: {
         username: '',
         password: ''
       },
-      // ÕâÊÇ±íµ¥µÄÑéÖ¤¹æÔò¶ÔÏó
+      // è¿™æ˜¯è¡¨å•çš„éªŒè¯è§„åˆ™å¯¹è±¡
       loginFormRules: {
-        // ÑéÖ¤ÓÃ»§ÃûÊÇ·ñºÏ·¨
+        // éªŒè¯ç”¨æˆ·åæ˜¯å¦åˆæ³•
         username: [
-          { required: true, message: 'ÇëÊäÈëµÇÂ¼Ãû³Æ', trigger: 'blur' },
-          { min: 3, max: 10, message: '³¤¶ÈÔÚ 3 µ½ 10 ¸ö×Ö·û', trigger: 'blur' }
+          { required: true, message: 'è¯·è¾“å…¥ç™»å½•åç§°', trigger: 'blur' },
+          { min: 3, max: 10, message: 'é•¿åº¦åœ¨ 3 åˆ° 10 ä¸ªå­—ç¬¦', trigger: 'blur' }
         ],
-        // ÑéÖ¤ÃÜÂëÊÇ·ñºÏ·¨
+        // éªŒè¯å¯†ç æ˜¯å¦åˆæ³•
         password: [
-          { required: true, message: 'ÇëÊäÈëµÇÂ¼ÃÜÂë', trigger: 'blur' },
-          { min: 6, max: 15, message: '³¤¶ÈÔÚ 6 µ½ 15 ¸ö×Ö·û', trigger: 'blur' }
+          { required: true, message: 'è¯·è¾“å…¥ç™»å½•å¯†ç ', trigger: 'blur' },
+          { min: 6, max: 15, message: 'é•¿åº¦åœ¨ 6 åˆ° 15 ä¸ªå­—ç¬¦', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-    // µã»÷ÖØÖÃ°´Å¥£¬ÖØÖÃµÇÂ¼±íµ¥
+    // ç‚¹å‡»é‡ç½®æŒ‰é’®ï¼Œé‡ç½®ç™»å½•è¡¨å•
     resetLoginForm () {
       // console.log(this);
       this.$refs.loginFormRef.resetFields()
@@ -59,13 +59,14 @@ export default {
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
         const { data: res } = await this.$http.post('login', this.loginForm)
-        if (res.meta.status !== 200) return this.$message.error('µÇÂ¼Ê§°Ü£¡')
-        this.$message.success('µÇÂ¼³É¹¦')
-        // 1. ½«µÇÂ¼³É¹¦Ö®ºóµÄ token£¬±£´æµ½¿Í»§¶ËµÄ sessionStorage ÖĞ
-        //   1.1 ÏîÄ¿ÖĞ³öÁËµÇÂ¼Ö®ÍâµÄÆäËûAPI½Ó¿Ú£¬±ØĞëÔÚµÇÂ¼Ö®ºó²ÅÄÜ·ÃÎÊ
-        //   1.2 token Ö»Ó¦ÔÚµ±Ç°ÍøÕ¾´ò¿ªÆÚ¼äÉúĞ§£¬ËùÒÔ½« token ±£´æÔÚ sessionStorage ÖĞ
+        console.log(res)
+        if (res.meta.status !== 200) return this.$message.error('ç™»å½•å¤±è´¥ï¼')
+        this.$message.success('ç™»å½•æˆåŠŸ')
+        // 1. å°†ç™»å½•æˆåŠŸä¹‹åçš„ tokenï¼Œä¿å­˜åˆ°å®¢æˆ·ç«¯çš„ sessionStorage ä¸­
+        //   1.1 é¡¹ç›®ä¸­å‡ºäº†ç™»å½•ä¹‹å¤–çš„å…¶ä»–APIæ¥å£ï¼Œå¿…é¡»åœ¨ç™»å½•ä¹‹åæ‰èƒ½è®¿é—®
+        //   1.2 token åªåº”åœ¨å½“å‰ç½‘ç«™æ‰“å¼€æœŸé—´ç”Ÿæ•ˆï¼Œæ‰€ä»¥å°† token ä¿å­˜åœ¨ sessionStorage ä¸­
         window.sessionStorage.setItem('token', res.data.token)
-        // 2. Í¨¹ı±à³ÌÊ½µ¼º½Ìø×ªµ½ºóÌ¨Ö÷Ò³£¬Â·ÓÉµØÖ·ÊÇ /home
+        // 2. é€šè¿‡ç¼–ç¨‹å¼å¯¼èˆªè·³è½¬åˆ°åå°ä¸»é¡µï¼Œè·¯ç”±åœ°å€æ˜¯ /home
         this.$router.push('/home')
       })
     }
