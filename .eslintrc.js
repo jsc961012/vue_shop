@@ -15,7 +15,8 @@ module.exports = {
     'comma-spacing':0,
     'quote-props':0,
     'indent':0,
-    'keyword-spacing':0
+    'keyword-spacing':0,
+    'vue/no-unused-vars':0
   },
   parserOptions: {
     parser: 'babel-eslint'
