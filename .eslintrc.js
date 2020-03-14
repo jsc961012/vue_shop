@@ -3,6 +3,10 @@ module.exports = {
   env: {
     node: true
   },
+  globals: {
+    'AMap': false,
+    'AMapUI': false
+  },
   'extends': [
     'plugin:vue/essential',
     '@vue/standard'
@@ -17,7 +21,10 @@ module.exports = {
     'indent':0,
     'keyword-spacing':0,
     'vue/no-unused-vars':0,
-    'no-useless-return':0
+    'no-useless-return':0,
+    'prefer-const':0,
+    'no-unused-vars':0,
+    'camelcase':0
   },
   parserOptions: {
     parser: 'babel-eslint'
